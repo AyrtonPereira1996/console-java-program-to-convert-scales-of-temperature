@@ -10,5 +10,19 @@ public class FahrenheitClass {
 		
 		return resultadoCelcius;
 	}
-
+	
+	// calculo de Fahrenheit para Kelvin 
+	public int converterKelvinParaFahrenheit(int valorFahrenheit) {
+		int fahrenheit = valorFahrenheit;	
+		int valorAuxi = ((valorFahrenheit - 32)/9)*5;
+		int resultadoKelvin = 0;
+		
+		if (valorAuxi < 0) {
+		resultadoKelvin = 273 - valorAuxi;	
+		} else if (valorAuxi > 0) {
+			resultadoKelvin = 273 + valorAuxi;
+		}
+			
+		return resultadoKelvin;
+	}
 }
