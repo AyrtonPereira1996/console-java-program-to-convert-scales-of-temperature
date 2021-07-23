@@ -13,12 +13,13 @@ public class CelciusClass {
 		
 	}
 	
-//	public int converterCelciusParaKelvin(int valorCelcius) {
-//		int celcius = valorCelcius;
-//		int valorAuxi;
-//		
-//		return valorKelvin;
-//	}
+	//Calculo de Celcius para Kelvin
+	public int converterCelciusParaKelvin(int valorCelcius) {
+		int celcius = valorCelcius;
+		int resultadoKelvin = celcius + 273;
+		
+		return resultadoKelvin;
+	}
 	
 	
 
