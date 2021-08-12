@@ -5,15 +5,8 @@ public class CelciusClass {
 
 	// Calculo de Celcius para Fahrenheit
 	public int converterCelciusParaFahrenheit(int valorCelcius) {
-		int resultadoFahrenheit = 0;
-		int valorAuxi = (valorCelcius / 5) * 9;
-
-		if (valorAuxi < 0) {
-			resultadoFahrenheit = valorAuxi - 32;
-		} else if (valorAuxi > 0) {
-			resultadoFahrenheit = -valorAuxi - 32;
-		}
-
+		int resultadoFahrenheit = (int) ((valorCelcius * 1.8) + 32);
+	
 		return resultadoFahrenheit;
 
 	}

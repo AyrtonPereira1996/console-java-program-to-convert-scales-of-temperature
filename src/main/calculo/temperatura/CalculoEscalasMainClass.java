@@ -4,7 +4,8 @@ package main.calculo.temperatura;
 public class CalculoEscalasMainClass {
 
 	public static void main(String[] args) {
-		CalculoEscalasApplication programa = new CalculoEscalasApplication();		
+		CalculoEscalasApplication programa = new CalculoEscalasApplication();	
+	
 	}
 
 }
