@@ -1,0 +1,30 @@
+	/*
+			 * if (respOpcao == 1) { System.out.println("Escolha a conversão que deseja");
+			 * System.out.println("1.Celcius -> Fahrenheit \n2.Celcius -> Kelvin ");
+			 * System.out.print("Sua resposta:"); respConversao = entrada.nextInt();
+			 * 
+			 * if (respConversao == 1) { do {
+			 * System.out.println("-------------------------"); System.out.
+			 * print("Será feita conversão de Celsius para Fahrenheit\nIntroduza a temperatura em celsius: "
+			 * ); valorCelsius = entrada.nextInt(); valorFahrenheitConvertido =
+			 * escalaCelsius.converterCelciusParaFahrenheit(valorCelsius);
+			 * System.out.print("Celsius: " + valorCelsius + "º\nFahrenheit: " +
+			 * valorFahrenheitConvertido);
+			 * 
+			 * System.out.println("Deseja repetir?"); String resp = entrada.next();
+			 * 
+			 * if (resp.equalsIgnoreCase("s")) { repetir = true; } else { repetir = false; }
+			 * 
+			 * 
+			 * } while (repetir == true);
+			 * 
+			 * } else if (respConversao == 2) {
+			 * 
+			 * }
+			 * 
+			 * } else if (respOpcao == 2) {
+			 * 
+			 * } else if (respOpcao == 3) {
+			 * 
+			 * }
+			 */

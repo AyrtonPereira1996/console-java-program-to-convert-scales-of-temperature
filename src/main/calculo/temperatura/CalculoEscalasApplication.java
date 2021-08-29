@@ -9,7 +9,9 @@ import escalas.calculo.temperatura.KelvinClass;
 public class CalculoEscalasApplication {
 
 //	variaveis que responsaveis por controlar o fluxo do programa
-	boolean isOver = false;
+	boolean repetirPrograma = false; // variavel que controla o programa como um todo
+	boolean repetirConversao = false; // variavel que controla o programa realizar uma determinada conversao
+	boolean repetirEscolhaConversaoEscalaEspecifica = false; // variavel que controla o acesso aos menus de cada escala
 
 	public CalculoEscalasApplication() {
 
@@ -26,7 +28,8 @@ public class CalculoEscalasApplication {
 		int valorFahrenheitConvertido;
 		int valorCelsiusConvertido;
 		int valorKelvinConvertido;
-		int respOpcao;
+		int respOpcaoInteger;
+		String respOpcaoString;
 		int respConversao;
 		Scanner entrada = new Scanner(System.in);
 
@@ -40,147 +43,364 @@ public class CalculoEscalasApplication {
 			System.out.println(
 					"\nEscolha a escala para converter de seguida pressione|ENTER|!(EX. 1)\n1.Celsius\n2.Kelvin\n3.Fahrenheit");
 			System.out.print("Sua resposta:");
-			respOpcao = entrada.nextInt();
+			respOpcaoInteger = entrada.nextInt();
 			System.out.println("-------------------------");
 
 //				Estrutura decisoria para escolha da escala para a conversão
-			switch (respOpcao) {
+			switch (respOpcaoInteger) {
 
 			case 1:
+				do {
 
-				System.out.println("Escolha a conversão que deseja");
-				System.out.println("1.Celcius -> Fahrenheit \n2.Celcius -> Kelvin ");
-				System.out.print("Sua resposta:");
-				respConversao = entrada.nextInt();
+					System.out.println("Escolha a conversão que deseja");
+					System.out.println("1.Celcius -> Fahrenheit \n2.Celcius -> Kelvin ");
+					System.out.print("Sua resposta:");
+					respConversao = entrada.nextInt();
 
 //									Estrutura decisoria interna para conversao de celcius para outras escalas
-				switch (respConversao) {
-				case 1:
-					System.out.println("-------------------------");
-					System.out.print(
-							"Será feita conversão de Celsius para Fahrenheit\nIntroduza a temperatura em celsius: ");
-					valorCelsius = entrada.nextInt();
-					valorFahrenheitConvertido = escalaCelsius.converterCelciusParaFahrenheit(valorCelsius);
-					System.out.print("Celsius: " + valorCelsius + "º\nFahrenheit: " + valorFahrenheitConvertido);
-					hasOver(true);
-					break;
+					switch (respConversao) {
+					case 1:
+						do {
 
-				case 2:
-					System.out.println("-------------------------");
-					System.out
-							.print("Será feita conversão de Celsius para Kelvin\nIntroduza a temperatura em celsius: ");
-					valorCelsius = entrada.nextInt();
-					valorKelvinConvertido = escalaCelsius.converterCelciusParaKelvin(valorCelsius);
-					System.out.print("Celsius: " + valorCelsius + "º\nKelvin: " + valorKelvinConvertido);
-					hasOver(true);
-					break;
+							System.out.println("-------------------------");
+							System.out.print(
+									"Será feita conversão de Celsius para Fahrenheit\nIntroduza a temperatura em celsius: ");
+							valorCelsius = entrada.nextInt();
+							valorFahrenheitConvertido = escalaCelsius.converterCelciusParaFahrenheit(valorCelsius);
+							System.out
+									.print("Celsius: " + valorCelsius + "º\nFahrenheit: " + valorFahrenheitConvertido);
 
-				default:
-					System.err.print("Escolha inválida.");
-					hasOver(true);
+							System.out.print("\n\nQuer converter de novamente? [S para sim e N para Não]");
+							respOpcaoString = entrada.next();
 
-					break;
-				}
+							if (respOpcaoString.equalsIgnoreCase("s")) {
+								repetirConversao = true;
 
-				;
+							} else if (respOpcaoString.equalsIgnoreCase("n")) {
+								System.out.println(
+										"Deseja voltar ao menu de conversão de celsius para outras escalas? [S para sim e N para Não]");
+								respOpcaoString = entrada.next();
+
+								if (respOpcaoString.equalsIgnoreCase("s")) {
+									repetirConversao = false;
+									repetirEscolhaConversaoEscalaEspecifica = true;
+
+								} else if (respOpcaoString.equalsIgnoreCase("n")) {
+									System.out.println("Deseja voltar ao menu inicial? [S para sim e N para Não]");
+									respOpcaoString = entrada.next();
+
+									if (respOpcaoString.equalsIgnoreCase("s")) {
+										repetirConversao = false;
+										repetirEscolhaConversaoEscalaEspecifica = false;
+									} else if (respOpcaoString.equalsIgnoreCase("n")) {
+										System.out.println("O programa irá terminar");
+										hasOver(true);
+									}
+								}
+
+							}
+
+						} while (repetirConversao == true);
+						break;
+
+					case 2:
+						do {
+
+							System.out.println("-------------------------");
+							System.out.print(
+									"Será feita conversão de Celsius para Kelvin\nIntroduza a temperatura em celsius: ");
+							valorCelsius = entrada.nextInt();
+							valorKelvinConvertido = escalaCelsius.converterCelciusParaKelvin(valorCelsius);
+							System.out.print("Celsius: " + valorCelsius + "º\nKelvin: " + valorKelvinConvertido);
+							System.out.print("\n\nQuer converter de novamente? [S para sim e N para Não]");
+							respOpcaoString = entrada.next();
+
+							if (respOpcaoString.equalsIgnoreCase("s")) {
+								repetirConversao = true;
+
+							} else if (respOpcaoString.equalsIgnoreCase("n")) {
+								System.out.println(
+										"Deseja voltar ao menu de conversão de celsius para outras escalas? [S para sim e N para Não]");
+								respOpcaoString = entrada.next();
+
+								if (respOpcaoString.equalsIgnoreCase("s")) {
+									repetirConversao = false;
+									repetirEscolhaConversaoEscalaEspecifica = true;
+
+								} else if (respOpcaoString.equalsIgnoreCase("n")) {
+									System.out.println("Deseja voltar ao menu inicial? [S para sim e N para Não]");
+									respOpcaoString = entrada.next();
+
+									if (respOpcaoString.equalsIgnoreCase("s")) {
+										repetirConversao = false;
+										repetirEscolhaConversaoEscalaEspecifica = false;
+									} else if (respOpcaoString.equalsIgnoreCase("n")) {
+										System.out.println("O programa irá terminar");
+										hasOver(true);
+									}
+								}
+
+							}
+
+						} while (repetirConversao == true);
+						break;
+
+					default:
+						System.err.print("Escolha inválida.");
+						hasOver(true);
+
+						break;
+					}
+
+					;
+
+				} while (repetirEscolhaConversaoEscalaEspecifica == true);
+
 				break;
 
 //					Estrutura decisoria interna para conversao de Kelvin para outras escalas
 			case 2:
+				do {
 
-				System.out.println("Escolha a conversão que deseja");
-				System.out.println("1.Kelvin -> Fahrenheit\n2.Kelvin -> Celsius");
-				System.out.print("Sua resposta:");
+					System.out.println("Escolha a conversão que deseja");
+					System.out.println("1.Kelvin -> Fahrenheit\n2.Kelvin -> Celsius");
+					System.out.print("Sua resposta:");
 
-				respConversao = entrada.nextInt();
+					respConversao = entrada.nextInt();
 
-				switch (respConversao) {
-				case 1:
-					System.out.println("-------------------------");
-					System.out.print(
-							"Será feita conversão de Kelvin para Fahrenheit\nIntroduza a temperatura em Kelvin: ");
-					valorKelvin = entrada.nextInt();
-					valorFahrenheitConvertido = escalaKelvin.converterKelvinParaFahrenheit(valorKelvin);
-					System.out.print("Kelvin: " + valorKelvin + "º\nFahrenheit: " + valorFahrenheitConvertido);
-					hasOver(true);
-					break;
+					switch (respConversao) {
+					case 1:
+						do {
 
-				case 2:
-					System.out.println("-------------------------");
-					System.out
-							.print("Será feita conversão de Kelvin para Celsius\nIntroduza a temperatura em Kelvin: ");
-					valorKelvin = entrada.nextInt();
-					valorCelsiusConvertido = escalaKelvin.converterKelvinParaCelsius(valorKelvin);
-					System.out.print("Kelvin: " + valorKelvin + "º\nCelsius: " + valorCelsiusConvertido);
-					hasOver(true);
-					break;
+							System.out.println("-------------------------");
+							System.out.print(
+									"Será feita conversão de Kelvin para Fahrenheit\nIntroduza a temperatura em Kelvin: ");
+							valorKelvin = entrada.nextInt();
+							valorFahrenheitConvertido = escalaKelvin.converterKelvinParaFahrenheit(valorKelvin);
+							System.out.print("Kelvin: " + valorKelvin + "º\nFahrenheit: " + valorFahrenheitConvertido);
 
-				default:
-					System.err.println("Escolha inválida.");
-					hasOver(true);
-					break;
-				}
+							System.out.print("\n\nQuer converter de novamente? [S para sim e N para Não]");
+							respOpcaoString = entrada.next();
+
+							if (respOpcaoString.equalsIgnoreCase("s")) {
+								repetirConversao = true;
+
+							} else if (respOpcaoString.equalsIgnoreCase("n")) {
+								System.out.println(
+										"Deseja voltar ao menu de conversão de celsius para outras escalas? [S para sim e N para Não]");
+								respOpcaoString = entrada.next();
+
+								if (respOpcaoString.equalsIgnoreCase("s")) {
+									repetirConversao = false;
+									repetirEscolhaConversaoEscalaEspecifica = true;
+
+								} else if (respOpcaoString.equalsIgnoreCase("n")) {
+									System.out.println("Deseja voltar ao menu inicial? [S para sim e N para Não]");
+									respOpcaoString = entrada.next();
+
+									if (respOpcaoString.equalsIgnoreCase("s")) {
+										repetirConversao = false;
+										repetirEscolhaConversaoEscalaEspecifica = false;
+									} else if (respOpcaoString.equalsIgnoreCase("n")) {
+										System.out.println("O programa irá terminar");
+										hasOver(true);
+									}
+								}
+
+							}
+
+						} while (repetirConversao == true);
+						break;
+
+					case 2:
+						do {
+
+							System.out.println("-------------------------");
+							System.out.print(
+									"Será feita conversão de Kelvin para Celsius\nIntroduza a temperatura em Kelvin: ");
+							valorKelvin = entrada.nextInt();
+							valorCelsiusConvertido = escalaKelvin.converterKelvinParaCelsius(valorKelvin);
+							System.out.print("Kelvin: " + valorKelvin + "º\nCelsius: " + valorCelsiusConvertido);
+
+							System.out.print("\n\nQuer converter de novamente? [S para sim e N para Não]");
+							respOpcaoString = entrada.next();
+
+							if (respOpcaoString.equalsIgnoreCase("s")) {
+								repetirConversao = true;
+
+							} else if (respOpcaoString.equalsIgnoreCase("n")) {
+								System.out.println(
+										"Deseja voltar ao menu de conversão de celsius para outras escalas? [S para sim e N para Não]");
+								respOpcaoString = entrada.next();
+
+								if (respOpcaoString.equalsIgnoreCase("s")) {
+									repetirConversao = false;
+									repetirEscolhaConversaoEscalaEspecifica = true;
+
+								} else if (respOpcaoString.equalsIgnoreCase("n")) {
+									System.out.println("Deseja voltar ao menu inicial? [S para sim e N para Não]");
+									respOpcaoString = entrada.next();
+
+									if (respOpcaoString.equalsIgnoreCase("s")) {
+										repetirConversao = false;
+										repetirEscolhaConversaoEscalaEspecifica = false;
+									} else if (respOpcaoString.equalsIgnoreCase("n")) {
+										System.out.println("O programa irá terminar");
+										hasOver(true);
+									}
+								}
+
+							}
+
+						} while (repetirConversao == true);
+						break;
+
+					default:
+						System.err.println("Escolha inválida.");
+						hasOver(true);
+						break;
+					}
+				} while (repetirEscolhaConversaoEscalaEspecifica == true);
 				break;
 
 //					Estrutura decisoria interna para conversao de Fahrenheit para outras escalas	
 			case 3:
+				do {
 
-				System.out.println("Escolha a conversão que deseja");
-				System.out.println("1.Fahrenheit -> Celsius \n2.Fahrenheit -> Kelvin ");
-				System.out.print("Sua resposta:");
-				respConversao = entrada.nextInt();
+					System.out.println("Escolha a conversão que deseja");
+					System.out.println("1.Fahrenheit -> Celsius \n2.Fahrenheit -> Kelvin ");
+					System.out.print("Sua resposta:");
+					respConversao = entrada.nextInt();
 
-				switch (respConversao) {
-				case 1:
+					switch (respConversao) {
+					case 1:
+						do {
 
-					System.out.println("-------------------------");
-					System.out.print(
-							"Será feita conversão de Fahrenheit para Celsius\nIntroduza a temperatura em Fahrenheit: ");
-					valorFahrenheit = entrada.nextInt();
-					valorCelsiusConvertido = escalaFahrenheit.converterFahrenheitParaCelcius(valorFahrenheit);
-					System.out.print("Fahrenheit: " + valorFahrenheit + "º\nCelsius: " + valorCelsiusConvertido);
-					hasOver(true);
-					break;
+							System.out.println("-------------------------");
+							System.out.print(
+									"Será feita conversão de Fahrenheit para Celsius\nIntroduza a temperatura em Fahrenheit: ");
+							valorFahrenheit = entrada.nextInt();
+							valorCelsiusConvertido = escalaFahrenheit.converterFahrenheitParaCelcius(valorFahrenheit);
+							System.out
+									.print("Fahrenheit: " + valorFahrenheit + "º\nCelsius: " + valorCelsiusConvertido);
 
-				case 2:
+							System.out.print("\n\nQuer converter de novamente? [S para sim e N para Não]");
+							respOpcaoString = entrada.next();
 
-					System.out.println("-------------------------");
-					System.out.print(
-							"Será feita conversão de Fahrenheit para Kelvin\nIntroduza a temperatura em Fahrenheit: ");
-					valorFahrenheit = entrada.nextInt();
-					valorKelvinConvertido = escalaFahrenheit.converterFahrenheitParaKelvin(valorFahrenheit);
-					System.out.print("Celsius: " + valorFahrenheit + "º\nKelvin: " + valorKelvinConvertido);
-					hasOver(true);
-					break;
+							if (respOpcaoString.equalsIgnoreCase("s")) {
+								repetirConversao = true;
 
-				default:
-					System.err.println("Escolha inválida.");
-					hasOver(true);
-					break;
-				}
+							} else if (respOpcaoString.equalsIgnoreCase("n")) {
+								System.out.println(
+										"Deseja voltar ao menu de conversão de celsius para outras escalas? [S para sim e N para Não]");
+								respOpcaoString = entrada.next();
+
+								if (respOpcaoString.equalsIgnoreCase("s")) {
+									repetirConversao = false;
+									repetirEscolhaConversaoEscalaEspecifica = true;
+
+								} else if (respOpcaoString.equalsIgnoreCase("n")) {
+									System.out.println("Deseja voltar ao menu inicial? [S para sim e N para Não]");
+									respOpcaoString = entrada.next();
+
+									if (respOpcaoString.equalsIgnoreCase("s")) {
+										repetirConversao = false;
+										repetirEscolhaConversaoEscalaEspecifica = false;
+									} else if (respOpcaoString.equalsIgnoreCase("n")) {
+										System.out.println("O programa irá terminar");
+										hasOver(true);
+									}
+								}
+
+							}
+
+						} while (repetirConversao == true);
+						break;
+
+					case 2:
+
+						do {
+							System.out.println("-------------------------");
+							System.out.print(
+									"Será feita conversão de Fahrenheit para Kelvin\nIntroduza a temperatura em Fahrenheit: ");
+							valorFahrenheit = entrada.nextInt();
+							valorKelvinConvertido = escalaFahrenheit.converterFahrenheitParaKelvin(valorFahrenheit);
+							System.out.print("Celsius: " + valorFahrenheit + "º\nKelvin: " + valorKelvinConvertido);
+							
+							System.out.print("\n\nQuer converter de novamente? [S para sim e N para Não]");
+							respOpcaoString = entrada.next();
+
+							if (respOpcaoString.equalsIgnoreCase("s")) {
+								repetirConversao = true;
+
+							} else if (respOpcaoString.equalsIgnoreCase("n")) {
+								System.out.println(
+										"Deseja voltar ao menu de conversão de celsius para outras escalas? [S para sim e N para Não]");
+								respOpcaoString = entrada.next();
+
+								if (respOpcaoString.equalsIgnoreCase("s")) {
+									repetirConversao = false;
+									repetirEscolhaConversaoEscalaEspecifica = true;
+
+								} else if (respOpcaoString.equalsIgnoreCase("n")) {
+									System.out.println("Deseja voltar ao menu inicial? [S para sim e N para Não]");
+									respOpcaoString = entrada.next();
+
+									if (respOpcaoString.equalsIgnoreCase("s")) {
+										repetirConversao = false;
+										repetirEscolhaConversaoEscalaEspecifica = false;
+									} else if (respOpcaoString.equalsIgnoreCase("n")) {
+										System.out.println("O programa irá terminar");
+										hasOver(true);
+									}
+								}
+
+							}
+
+						} while (repetirConversao == true);
+						break;
+
+					default:
+						System.err.println("Escolha inválida.");
+						hasOver(true);
+						break;
+					}
+
+				} while (repetirEscolhaConversaoEscalaEspecifica == true);
 				break;
 
 			default:
 				break;
 			}
 
-		} while (isOver);
+		} while (!repetirPrograma);
 
 	}
 
+//	Metodo que e chamado quando queremos terminar o programa
 	private void hasOver(boolean answer) {
 		if (answer == true) {
-			isOver = true;
-			System.out.print("\n\nSaindo do programa.....");
+
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(800);
+				repetirPrograma = true;
+
+				System.out.print("\n\nSaindo do programa");
+				for (int i = 0; i < 3; i++) {
+					Thread.sleep(500);
+					System.out.print(" .");
+
+					if (i == 2)
+						System.out.print(" BYE!");
+				}
+
 			} catch (InterruptedException e) {
 				System.err.println(e);
 
 			}
 			System.exit(0);
 		} else if (answer == false) {
-			isOver = false;
+			repetirPrograma = false;
 		}
 	}
 }
