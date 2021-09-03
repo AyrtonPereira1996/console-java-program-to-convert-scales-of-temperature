@@ -1,4 +1,4 @@
-#Program to convert Scales Of Temperature
+# Program to convert Scales Of Temperature
 
 This repository is about a program that does conversion of three types of temperature scales as:
 
