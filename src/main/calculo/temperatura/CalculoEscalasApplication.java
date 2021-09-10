@@ -413,7 +413,7 @@ public class CalculoEscalasApplication {
 
 			try {
 				Thread.sleep(800);
-				repetirPrograma = true;
+				repetirPrograma = false;
 
 				System.out.print("\n\nSaindo do programa");
 				for (int i = 0; i < 3; i++) {
@@ -430,7 +430,7 @@ public class CalculoEscalasApplication {
 			}
 			System.exit(0);
 		} else if (answer == false) {
-			repetirPrograma = false;
+			repetirPrograma = true;
 		}
 	}
 }
