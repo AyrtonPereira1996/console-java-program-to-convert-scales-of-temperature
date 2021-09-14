@@ -21,7 +21,7 @@ This repository is about a program that does conversion of three types of temper
 **On IDE:**
 
 I created this program on ECLIPSE. So, if you want to run this program on ECLIPSE IDE, you must do the next steps:
-- You must first download the code at [Ayrton GitHub] https://github.com/AyrtonPereira1996/console-java-program-to-convert-scales-of-temperature
+- You must first download the code at [Ayrton repository GitHub]https://github.com/AyrtonPereira1996/console-java-program-to-convert-scales-of-temperature
 
 ![Captura de ecrã de 2021-09-03 11-39-46](https://user-images.githubusercontent.com/40174805/132048009-58d6a6cf-26d3-4d8b-a703-386e4967a7ff.png)
 
@@ -36,9 +36,13 @@ I created this program on ECLIPSE. So, if you want to run this program on ECLIPS
 
 - First, to run any java program in the terminal you must have JDK installed on your machine
 - Once you have the JDK installed on your powerful machine, you must compile at the same time all the files with extension .java in the **main/** and **escalas/** project packages.
-  1. First goes inside to the location where the project was a store or downloaded
-  2. Second, you must enter inside of project folder and there must run the command that will compile all the .java files that have to be compiled with the command:
+
+  1. First goes inside to the location where the project was save and than enter inside the project folder.
   
+  **cd folder_where_you_put_the_project/console-java-program-to-convert-scales-of-temperature-master**
+  
+  3. Second, once you are ate project folder you must run the command that will compile all the .java files that have to be compiled with the command:
+    
   **javac src/main/calculo/temperatura/.java src/escalas/calculo/temperatura/.java**
 
   3. After compiling the .java files, you can run the main class to start the program with the command:
