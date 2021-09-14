@@ -32,7 +32,7 @@ I created this program on ECLIPSE. So, if you want to run this program on ECLIPS
 
 - Once the project is in the eclipse workspace you must find the class that contains the main method and RUN...
 
-**On Terminal (Linux - Linux mint or ubuntu)**
+**On Terminal (OS Linux - Linux mint, ubuntu, debian)**
 
 - First, to run any java program in the terminal you must have JDK installed on your machine
 - Once you have the JDK installed on your powerful machine, you must compile at the same time all the files with extension .java in the **main/** and **escalas/** project packages.
@@ -41,10 +41,14 @@ I created this program on ECLIPSE. So, if you want to run this program on ECLIPS
   
   **cd folder_where_you_put_the_project/console-java-program-to-convert-scales-of-temperature-master**
   
-  3. Second, once you are ate project folder you must run the command that will compile all the .java files that have to be compiled with the command:
+  3. Second, once you are at project folder you must run the command that will compile all the .java files that have to be compiled with the command:
     
   **javac src/main/calculo/temperatura/.java src/escalas/calculo/temperatura/.java**
 
   3. After compiling the .java files, you can run the main class to start the program with the command:
   
   **java src/main/calculo/temperatura/CalculoEscalasMainClass**
+
+
+  
+  
